@@ -1,5 +1,6 @@
 package rip.shuka;
 
+import rip.shuka.core.error.CallError;
 import rip.shuka.core.utils.FileReader;
 
 import java.io.IOException;
@@ -13,13 +14,12 @@ public class Main {
             String file = args[0];
 
             if (!file.endsWith(".uwu")) {
-                System.err.println("Keine Datei mit der .uwu-Endung gefunden");
-                return;
+                file = file + ".uwu";
             }
 
             fileReader.read(file);
         } else {
-            System.err.println("Kein Pfad wurde ausgewählt");
+            CallError.callError("Kein Pfad wurde ausgewählt");
         }
 
     }

@@ -1,2 +1,10 @@
-meow
-    meow
+#Grüne-Ausgabe
+daijoubu(any<56>)
+
+#Error-Ausgabe
+error(int<56>)
+
+#Normale-Ausgabe
+moan(int<56>)
+
+moan(bool<>)
