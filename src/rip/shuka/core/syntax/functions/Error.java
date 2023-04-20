@@ -1,20 +1,22 @@
 package rip.shuka.core.syntax.functions;
 
 import rip.shuka.core.syntax.Parameter;
-import rip.shuka.core.syntax.SyntaxDatatype;
+import rip.shuka.core.syntax.Datatype;
 import rip.shuka.core.syntax.SyntaxElement;
 import rip.shuka.core.syntax.SyntaxTypes;
 import rip.shuka.core.syntax.datatypes.Any;
+import rip.shuka.core.syntax.datatypes.Null;
 
-public class Error extends SyntaxElement {
+public class Error extends SyntaxElement<Null> {
     public Error() {
         super("error", SyntaxTypes.FUNCTION, new Parameter[] {
-                new Parameter("", new SyntaxDatatype[] { new Any() }, "The text to display as an error")
+                new Parameter("", new Datatype[] { new Any() }, "The text to display as an error")
         });
     }
 
     @Override
-    public void execute(String[] args) {
+    public Null execute(String[] args) {
         System.err.println(args[0]);
+        return new Null();
     }
 }

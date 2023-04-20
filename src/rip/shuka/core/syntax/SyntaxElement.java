@@ -1,6 +1,6 @@
 package rip.shuka.core.syntax;
 
-public abstract class SyntaxElement {
+public abstract class SyntaxElement<T> {
     private final String name;
     private final SyntaxTypes type;
     private final Parameter[] parameters;
@@ -11,7 +11,7 @@ public abstract class SyntaxElement {
         this.parameters = parameters;
     }
 
-    public abstract void execute(String[] args);
+    public abstract T execute(String[] args);
 
     public String getName() {
         return name;

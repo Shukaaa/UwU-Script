@@ -1,13 +1,17 @@
 package rip.shuka.core.interpreter;
 
 import rip.shuka.core.error.CallError;
-import rip.shuka.core.syntax.SyntaxDatatype;
+import rip.shuka.core.syntax.Datatype;
 import rip.shuka.core.syntax.SyntaxVars;
 
 public class InterpreterForDatatype {
     public static String interpretDatatype(String argument, int lineNumber) {
+        if (!argument.contains("<") && !argument.contains(">")) {
+            return null;
+        }
+
         // Check each syntaxDatatype
-        for (SyntaxDatatype syntaxDatatype : SyntaxVars.syntaxDatatypes) {
+        for (Datatype syntaxDatatype : SyntaxVars.syntaxDatatypes) {
             if (syntaxDatatype.getType() == Integer.class && argument.startsWith(syntaxDatatype.getName())) {
                 if (argument.startsWith(syntaxDatatype.getName() + "<") && argument.endsWith(">")) {
                     String data = argument.substring(syntaxDatatype.getName().length() + 1, argument.length() - 1);

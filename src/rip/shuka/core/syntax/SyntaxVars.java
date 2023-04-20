@@ -1,6 +1,6 @@
 package rip.shuka.core.syntax;
 
-import rip.shuka.core.syntax.datatypes.Any;
+import rip.shuka.core.syntax.datatypes.*;
 import rip.shuka.core.syntax.datatypes.Boolean;
 import rip.shuka.core.syntax.datatypes.Float;
 import rip.shuka.core.syntax.datatypes.Integer;
@@ -21,11 +21,12 @@ public class SyntaxVars {
             new Error()
     };
 
-    public static SyntaxDatatype[] syntaxDatatypes = {
+    public static Datatype[] syntaxDatatypes = {
             new Integer(),
             new String(),
             new Float(),
             new Any(),
-            new Boolean()
+            new Boolean(),
+            new Null()
     };
 }

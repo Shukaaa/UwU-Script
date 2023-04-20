@@ -1,10 +1,6 @@
 #Grüne-Ausgabe
-daijoubu(any<56>)
+daijoubu(str<a>) moan()
 
-#Error-Ausgabe
-error(int<56>)
+moan(int<69>)
 
-#Normale-Ausgabe
-moan(int<56>)
-
-moan(bool<>)
+error(str<bo<<<<><b>)

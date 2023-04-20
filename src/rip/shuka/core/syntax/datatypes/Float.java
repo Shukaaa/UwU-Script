@@ -1,8 +1,8 @@
 package rip.shuka.core.syntax.datatypes;
 
-import rip.shuka.core.syntax.SyntaxDatatype;
+import rip.shuka.core.syntax.Datatype;
 
-public class Float extends SyntaxDatatype<java.lang.Float> {
+public class Float extends Datatype {
     public Float() {
         super("float", java.lang.Float.class);
     }

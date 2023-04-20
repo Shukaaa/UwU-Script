@@ -1,4 +1,6 @@
-- Parameter Datenzuweisungen geben
+- Parameter Datentypzuweisungen geben
 - Bug fixen das die Daten nicht synchron laufen und die FUnktionen wahllos aufgerufen werden
 - Variablen hinzufügen
 - Code Cleanup
+- Mathematische Funktionen
+- Casting von Datentypen
