@@ -1,6 +1,8 @@
 package rip.shuka.core.syntax;
 
-public abstract class SyntaxElement<T> {
+import rip.shuka.core.syntax.datatypes.DatatypeObject.DatatypeObject;
+
+public abstract class SyntaxElement {
     private final String name;
     private final SyntaxTypes type;
     private final Parameter[] parameters;
@@ -11,7 +13,7 @@ public abstract class SyntaxElement<T> {
         this.parameters = parameters;
     }
 
-    public abstract T execute(String[] args);
+    public abstract DatatypeObject execute(DatatypeObject[] args);
 
     public String getName() {
         return name;

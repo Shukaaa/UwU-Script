@@ -3,9 +3,12 @@ package rip.shuka.core.interpreter;
 import rip.shuka.core.error.CallError;
 import rip.shuka.core.syntax.Datatype;
 import rip.shuka.core.syntax.SyntaxVars;
+import rip.shuka.core.syntax.datatypes.DatatypeObject.DatatypeObject;
+
+import java.util.Objects;
 
 public class InterpreterForDatatype {
-    public static String interpretDatatype(String argument, int lineNumber) {
+    public static DatatypeObject interpretDatatype(String argument, int lineNumber) {
         if (!argument.contains("<") && !argument.contains(">")) {
             return null;
         }
@@ -21,14 +24,13 @@ public class InterpreterForDatatype {
                     } catch (NumberFormatException e) {
                         CallError.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a valid integer.");
                     }
-
-                    return data;
+                    return new DatatypeObject(syntaxDatatype, data);
                 }
             }
 
-            if (syntaxDatatype.getType() == String.class && (argument.startsWith(syntaxDatatype.getName()))) {
+            if (syntaxDatatype.getType() == String.class && (argument.startsWith(syntaxDatatype.getName())) && Objects.equals(syntaxDatatype.getName(), "str")) {
                 if (argument.startsWith(syntaxDatatype.getName() + "<") && argument.endsWith(">")) {
-                    return argument.substring(syntaxDatatype.getName().length() + 1, argument.length() - 1);
+                    return new DatatypeObject(syntaxDatatype, argument.substring(syntaxDatatype.getName().length() + 1, argument.length() - 1));
                 }
             }
 
@@ -42,7 +44,7 @@ public class InterpreterForDatatype {
                         CallError.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a valid float.");
                     }
 
-                    return data;
+                    return new DatatypeObject(syntaxDatatype, data);
                 }
             }
 
@@ -50,19 +52,30 @@ public class InterpreterForDatatype {
                 if (argument.startsWith(syntaxDatatype.getName() + "<") && argument.endsWith(">")) {
                     String data = argument.substring(syntaxDatatype.getName().length() + 1, argument.length() - 1);
 
-                    Boolean bool = Boolean.FALSE;
+                    boolean bool = Boolean.FALSE;
                     try {
-                        bool = Boolean.valueOf(data);
+                        bool = Boolean.parseBoolean(data);
                     } catch (Exception e) {
                         CallError.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a boolean.");
                     }
 
-                    return bool ? "true" : "false";
+                    return new DatatypeObject(syntaxDatatype, bool ? "true" : "false");
+                }
+            }
+
+            if (syntaxDatatype.getType() == String.class && (argument.startsWith(syntaxDatatype.getName())) && Objects.equals(syntaxDatatype.getName(), "any")) {
+                if (argument.startsWith(syntaxDatatype.getName() + "<") && argument.endsWith(">")) {
+                    return new DatatypeObject(syntaxDatatype, argument.substring(syntaxDatatype.getName().length() + 1, argument.length() - 1));
+                }
+            }
+
+            if (syntaxDatatype.getType() == null && (argument.startsWith(syntaxDatatype.getName()))) {
+                if (argument.startsWith(syntaxDatatype.getName() + "<") && argument.endsWith(">")) {
+                    return new DatatypeObject(syntaxDatatype, null);
                 }
             }
         }
 
-        CallError.callError("Datatype <" + argument + "> at line " + lineNumber + " does NOT make sense :(");
         return null;
     }
 }

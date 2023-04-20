@@ -5,9 +5,10 @@ import rip.shuka.core.syntax.Datatype;
 import rip.shuka.core.syntax.SyntaxElement;
 import rip.shuka.core.syntax.SyntaxTypes;
 import rip.shuka.core.syntax.datatypes.Any;
+import rip.shuka.core.syntax.datatypes.DatatypeObject.DatatypeObject;
 import rip.shuka.core.syntax.datatypes.Null;
 
-public class Moan extends SyntaxElement<Null> {
+public class Moan extends SyntaxElement {
     public Moan() {
         super("moan", SyntaxTypes.FUNCTION, new Parameter[] {
                 new Parameter("", new Datatype[] { new Any()}, "The text to moan")
@@ -15,8 +16,8 @@ public class Moan extends SyntaxElement<Null> {
     }
 
     @Override
-    public Null execute(String[] args) {
-        System.out.println(args[0]);
-        return new Null();
+    public DatatypeObject execute(DatatypeObject[] args) {
+        System.out.println(args[0].value());
+        return new DatatypeObject(new Null(), null);
     }
 }

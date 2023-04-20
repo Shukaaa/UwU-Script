@@ -5,20 +5,22 @@ import rip.shuka.core.syntax.datatypes.Boolean;
 import rip.shuka.core.syntax.datatypes.Float;
 import rip.shuka.core.syntax.datatypes.Integer;
 import rip.shuka.core.syntax.datatypes.String;
-import rip.shuka.core.syntax.functions.Comments;
-import rip.shuka.core.syntax.functions.Daijoubu;
+import rip.shuka.core.syntax.functions.*;
 import rip.shuka.core.syntax.functions.Error;
-import rip.shuka.core.syntax.functions.Moan;
 
 public class SyntaxVars {
     public static SyntaxElement[] syntaxElements = {
-            // Util Functions
+            // Comments
             new Comments(),
 
             // Print Functions
             new Moan(),
             new Daijoubu(),
-            new Error()
+            new Error(),
+
+            // Variable Functions
+            new VariablesUwu(),
+            new VariablesOwo()
     };
 
     public static Datatype[] syntaxDatatypes = {

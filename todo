@@ -1,6 +1,9 @@
-- Parameter Datentypzuweisungen geben
-- Bug fixen das die Daten nicht synchron laufen und die FUnktionen wahllos aufgerufen werden
-- Variablen hinzufügen
 - Code Cleanup
+- Comments take full line
 - Mathematische Funktionen
+- If Else
+- Loop For
 - Casting von Datentypen
+- MAL Api
+- Functions
+- Arrays

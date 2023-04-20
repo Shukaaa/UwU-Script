@@ -7,10 +7,8 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         FileReader fileReader = new FileReader();
-
-        System.out.println("End main thread.");
 
         if (args.length == 1) {
             String file = args[0];
