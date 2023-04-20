@@ -58,7 +58,11 @@ public class Interpreter {
 
         for (String parameter : given_parameters) {
             if (Objects.equals(parameter, "")) {
-                CallError.callError("The function on line " + lineNumber + " and position " + position + " has " + parameters.length + " parameters but " + (given_parameters.length - 1) + " were given.");
+                if (parameters.length != 0) {
+                    CallError.callError("The function on line " + lineNumber + " and position " + position + " has " + parameters.length + " parameters but " + (given_parameters.length - 1) + " were given.");
+                } else {
+                    return new DatatypeObject[0];
+                }
             }
         }
 

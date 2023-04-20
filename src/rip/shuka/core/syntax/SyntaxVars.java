@@ -20,7 +20,10 @@ public class SyntaxVars {
 
             // Variable Functions
             new VariablesUwu(),
-            new VariablesOwo()
+            new VariablesOwo(),
+
+            // Exit Function
+            new Sayonara()
     };
 
     public static Datatype[] syntaxDatatypes = {
