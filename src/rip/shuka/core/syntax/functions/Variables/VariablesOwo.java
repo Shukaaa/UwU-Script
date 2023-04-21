@@ -1,4 +1,4 @@
-package rip.shuka.core.syntax.functions;
+package rip.shuka.core.syntax.functions.Variables;
 
 import rip.shuka.core.syntax.Datatype;
 import rip.shuka.core.syntax.Parameter;

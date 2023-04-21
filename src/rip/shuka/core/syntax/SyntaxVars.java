@@ -5,8 +5,13 @@ import rip.shuka.core.syntax.datatypes.Boolean;
 import rip.shuka.core.syntax.datatypes.Float;
 import rip.shuka.core.syntax.datatypes.Integer;
 import rip.shuka.core.syntax.datatypes.String;
-import rip.shuka.core.syntax.functions.*;
-import rip.shuka.core.syntax.functions.Error;
+import rip.shuka.core.syntax.functions.Basics.Comments;
+import rip.shuka.core.syntax.functions.Console.Daijoubu;
+import rip.shuka.core.syntax.functions.Console.Error;
+import rip.shuka.core.syntax.functions.Console.Moan;
+import rip.shuka.core.syntax.functions.System.Sayonara;
+import rip.shuka.core.syntax.functions.Variables.VariablesOwo;
+import rip.shuka.core.syntax.functions.Variables.VariablesUwu;
 
 public class SyntaxVars {
     public static SyntaxElement[] syntaxElements = {
