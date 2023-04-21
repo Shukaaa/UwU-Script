@@ -8,7 +8,7 @@ import rip.shuka.core.syntax.datatypes.Null;
 
 public class Comments extends SyntaxElement {
     public Comments() {
-        super("#", SyntaxTypes.COMMENT, new Parameter[]{});
+        super("//", SyntaxTypes.COMMENT, new Parameter[]{});
     }
 
     @Override

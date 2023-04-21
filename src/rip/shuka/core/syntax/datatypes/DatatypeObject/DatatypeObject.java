@@ -11,10 +11,6 @@ public record DatatypeObject(Datatype datatype, String value) {
     }
 
     public boolean isValidDatatype(Datatype[] datatypes) {
-        if (datatypes.length == 0) {
-            return false;
-        }
-
         for (Datatype datatype : datatypes) {
             if (isValidDatatype(datatype)) {
                 return true;

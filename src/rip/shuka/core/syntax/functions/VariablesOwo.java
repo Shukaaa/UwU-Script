@@ -12,7 +12,7 @@ import rip.shuka.core.syntax.variables.VariableStore;
 public class VariablesOwo extends SyntaxElement {
     public VariablesOwo() {
         super("owo", SyntaxTypes.FUNCTION, new Parameter[] {
-                new Parameter("name", new Datatype[] { new String() }, "The name of the variable"),
+                new Parameter(null, new Datatype[] { new String() }, "The name of the variable"),
         });
     }
 

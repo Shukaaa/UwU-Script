@@ -13,8 +13,8 @@ import rip.shuka.core.syntax.variables.VariableStore;
 public class VariablesUwu extends SyntaxElement {
     public VariablesUwu() {
         super("uwu", SyntaxTypes.FUNCTION, new Parameter[] {
-                new Parameter("name", new Datatype[] { new String() }, "The name of the variable"),
-                new Parameter("value", new Datatype[] { new Any() }, "The value of the variable")
+                new Parameter(null, new Datatype[] { new String() }, "The name of the variable"),
+                new Parameter(null, new Datatype[] { new Any() }, "The value of the variable")
         });
     }
 

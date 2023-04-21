@@ -11,7 +11,7 @@ import rip.shuka.core.syntax.datatypes.Null;
 public class Error extends SyntaxElement {
     public Error() {
         super("error", SyntaxTypes.FUNCTION, new Parameter[] {
-                new Parameter("", new Datatype[] { new Any() }, "The text to display as an error")
+                new Parameter(null, new Datatype[] { new Any() }, "The text to display as an error")
         });
     }
 

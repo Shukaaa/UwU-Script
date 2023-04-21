@@ -11,7 +11,7 @@ import rip.shuka.core.syntax.datatypes.Null;
 public class Daijoubu extends SyntaxElement {
     public Daijoubu() {
         super("daijoubu", SyntaxTypes.FUNCTION, new Parameter[] {
-                new Parameter("", new Datatype[] { new Any()}, "The text to moan but it's green")
+                new Parameter(null, new Datatype[] { new Any()}, "The text to moan but it's green")
         });
     }
 

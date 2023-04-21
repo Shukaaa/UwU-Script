@@ -1,5 +1,5 @@
-- Code Cleanup
 - Comments take full line
+- Spaces inside datatypes
 - Mathematische Funktionen
 - If Else
 - Loop For
@@ -7,3 +7,10 @@
 - MAL Api
 - Functions
 - Arrays
+
+
+# Extreme Future
+- Create VS Code Plugin
+- Create IntelliJ Plugin
+- Installer for the Language
+- CLI for the Language

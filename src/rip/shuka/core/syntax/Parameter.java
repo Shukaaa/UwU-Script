@@ -22,4 +22,6 @@ public class Parameter {
     public String getDescription() {
         return description;
     }
+
+    public boolean isRequired() { return value == null; }
 }

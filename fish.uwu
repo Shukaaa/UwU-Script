@@ -1,4 +1,5 @@
-uwu(str<Alter>,int<17>)
-moan(owo(str<Alter>))
-sayonara()
-moan(owo(str<Alter>))
+// Variablen speichern Code-Example
+
+uwu(str<Alter>,int<17>) // uwu zum definieren der Variablen
+moan(owo(str<Alter>)) // moan zum printen, owo zur Ausgabe der Variable
+sayonara(str<byebye>) // sayonara beendet das Programm mit einer Verabschiedung
