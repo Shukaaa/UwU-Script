@@ -19,6 +19,12 @@ public class Interpreter {
                 break;
             }
 
+            // Space Wildcard for Parameters
+            if (argument.endsWith(",")) {
+                lineParts[i+1] = argument + lineParts[i+1];
+                continue;
+            }
+
             // Check each syntaxElement
             for (SyntaxElement syntaxElement : SyntaxVars.syntaxElements) {
                 // Function [name()] matching only the beginning of the string
@@ -37,6 +43,7 @@ public class Interpreter {
                 // Comment matching only the beginning of the string
                 if (syntaxElement.getType() == SyntaxTypes.COMMENT && argument.startsWith(syntaxElement.getName())) {
                     results[i] = syntaxElement.execute(new DatatypeObject[0]);
+                    // Return so line is not interpreted anymore because it's a comment
                     return results;
                 }
             }

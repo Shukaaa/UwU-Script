@@ -1,4 +1,4 @@
-- Comments take full line
+- Functionholder
 - Spaces inside datatypes
 - Mathematische Funktionen
 - If Else
@@ -9,8 +9,9 @@
 - Arrays
 
 
-# Extreme Future
+# Big Tasks
 - Create VS Code Plugin
 - Create IntelliJ Plugin
-- Installer for the Language
-- CLI for the Language
+- Installer & CLI for the Language
+- Dokumentationsseite mit Angular erstellen
+- Webseite hosten und alles public zur Verfügung stellen
