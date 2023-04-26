@@ -1,1 +1,7 @@
-console.moan(math.add(int<1>, int<2>))
+console.moan(math.add(int<100>, int<2>))
+console.moan(math.sub(int<100>, int<2>))
+console.moan(math.multi(int<100>, int<2>))
+console.moan(math.div(int<100>, int<2>))
+console.moan(math.mod(int<100>, float<26.2>))
+console.moan(math.even(int<100>))
+console.moan(math.odd(int<100>))

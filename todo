@@ -1,4 +1,15 @@
-- Mathematische Funktionen
+# Mathematische Funktionen
+- Even, Odd shorthands
+- Exponentiation/Powers (^)
+- Square root (√)
+- Logarithm (log)
+- Exponential function (exp)
+- Trigonometric functions (sin, cos, tan, asin, acos, atan)
+- Round to the nearest integer (round)
+- Round up (ceil)
+- Round down (floor)
+- Round to a specific number of decimal places
+
 - If Else
 - Loop For
 - Casting von Datentypen
