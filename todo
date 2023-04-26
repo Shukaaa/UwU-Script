@@ -1,15 +1,13 @@
-- Functionholder
-- Spaces inside datatypes
 - Mathematische Funktionen
 - If Else
 - Loop For
 - Casting von Datentypen
-- MAL Api
 - Functions
 - Arrays
-
+- Input Function
 
 # Big Tasks
+- Repo hübsch machen mit ReadMe etc.
 - Create VS Code Plugin
 - Create IntelliJ Plugin
 - Installer & CLI for the Language

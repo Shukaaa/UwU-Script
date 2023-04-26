@@ -1,14 +1,14 @@
 package rip.shuka;
 
-import rip.shuka.core.error.CallError;
-import rip.shuka.core.utils.FileReader;
+import rip.shuka.core.utils.ErrorUtil;
+import rip.shuka.core.utils.FileReaderUtil;
 
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        FileReader fileReader = new FileReader();
+        FileReaderUtil fileReader = new FileReaderUtil();
 
         if (args.length == 1) {
             String file = args[0];
@@ -19,7 +19,7 @@ public class Main {
 
             fileReader.read(file);
         } else {
-            CallError.callError("Kein Pfad wurde ausgewählt");
+            ErrorUtil.callError("Kein Pfad wurde ausgewählt");
         }
 
     }

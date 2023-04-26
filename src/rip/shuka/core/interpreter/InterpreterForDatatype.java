@@ -1,20 +1,25 @@
 package rip.shuka.core.interpreter;
 
-import rip.shuka.core.error.CallError;
-import rip.shuka.core.syntax.Datatype;
-import rip.shuka.core.syntax.SyntaxVars;
-import rip.shuka.core.syntax.datatypes.DatatypeObject.DatatypeObject;
+import rip.shuka.core.utils.ErrorUtil;
+import rip.shuka.core.logic.datatypes.Datatype;
+import rip.shuka.core.logic.LogicCollection;
+import rip.shuka.core.logic.datatypes.DatatypeObject;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InterpreterForDatatype {
     public static DatatypeObject interpretDatatype(String argument, int lineNumber) {
-        if (!argument.contains("<") && !argument.contains(">")) {
+        Pattern pattern = Pattern.compile("^\\w+<[^<>]*>$");
+        Matcher matcher = pattern.matcher(argument);
+
+        if (!matcher.find()) {
             return null;
         }
 
         // Check each syntaxDatatype
-        for (Datatype syntaxDatatype : SyntaxVars.syntaxDatatypes) {
+        for (Datatype syntaxDatatype : LogicCollection.datatypes) {
             if (syntaxDatatype.getType() == Integer.class && argument.startsWith(syntaxDatatype.getName())) {
                 if (argument.startsWith(syntaxDatatype.getName() + "<") && argument.endsWith(">")) {
                     String data = argument.substring(syntaxDatatype.getName().length() + 1, argument.length() - 1);
@@ -22,7 +27,7 @@ public class InterpreterForDatatype {
                     try {
                         Integer.parseInt(data);
                     } catch (NumberFormatException e) {
-                        CallError.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a valid integer.");
+                        ErrorUtil.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a valid integer.");
                     }
                     return new DatatypeObject(syntaxDatatype, data);
                 }
@@ -41,7 +46,7 @@ public class InterpreterForDatatype {
                     try {
                         Double.parseDouble(data);
                     } catch (NumberFormatException e) {
-                        CallError.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a valid float.");
+                        ErrorUtil.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a valid float.");
                     }
 
                     return new DatatypeObject(syntaxDatatype, data);
@@ -56,7 +61,7 @@ public class InterpreterForDatatype {
                     try {
                         bool = Boolean.parseBoolean(data);
                     } catch (Exception e) {
-                        CallError.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a boolean.");
+                        ErrorUtil.callError("Datatype <" + syntaxDatatype.getName() + "> at line " + lineNumber + " is not a boolean.");
                     }
 
                     return new DatatypeObject(syntaxDatatype, bool ? "true" : "false");

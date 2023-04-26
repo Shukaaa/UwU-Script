@@ -1,6 +1,1 @@
-// Variablen speichern Code-Example
-
-uwu(str<Alter>, str<17>) // uwu zum definieren der Variablen
-uwu(str<bye>, owo(str<Alter>)) // uwu zum definieren der Variablen
-
-sayonara(owo(str<bye>)) // sayonara beendet das Programm mit einer optionalen Verabschiedung
+console.moan(math.add(int<1>, int<2>))
