@@ -1,6 +1,6 @@
 package rip.shuka.core.logic.functions.Math;
 
-import rip.shuka.core.logic.LogicElement;
+import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.datatypes.Datatype;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 import rip.shuka.core.logic.datatypes.types.Float;
@@ -9,7 +9,7 @@ import rip.shuka.core.logic.parameter.Parameter;
 
 import java.util.Objects;
 
-public class Mod extends LogicElement {
+public class Mod extends Function {
     public Mod() {
         super("mod", new Parameter[]{
                 new Parameter(null, new Datatype[]{ new Float(), new Integer() }, "modulo num 1"),

@@ -2,14 +2,14 @@ package rip.shuka.core.logic.functions.Variables;
 
 import rip.shuka.core.logic.datatypes.Datatype;
 import rip.shuka.core.logic.parameter.Parameter;
-import rip.shuka.core.logic.LogicElement;
+import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.datatypes.types.Any;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 import rip.shuka.core.logic.datatypes.types.String;
 import rip.shuka.core.logic.variables.Variable;
 import rip.shuka.core.logic.variables.VariableStore;
 
-public class VariablesUwu extends LogicElement {
+public class VariablesUwu extends Function {
     public VariablesUwu() {
         super("uwu",  new Parameter[] {
                 new Parameter(null, new Datatype[] { new String() }, "The name of the variable"),

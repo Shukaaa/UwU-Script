@@ -1,6 +1,6 @@
 package rip.shuka.core.logic.functions.Math;
 
-import rip.shuka.core.logic.LogicElement;
+import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.datatypes.Datatype;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 import rip.shuka.core.logic.datatypes.types.Float;
@@ -9,7 +9,7 @@ import rip.shuka.core.logic.parameter.Parameter;
 
 import java.util.Objects;
 
-public class Sub extends LogicElement {
+public class Sub extends Function {
     public Sub() {
         super("sub", new Parameter[]{
                 new Parameter(null, new Datatype[]{ new Float(), new Integer() }, "subtraction num 1"),

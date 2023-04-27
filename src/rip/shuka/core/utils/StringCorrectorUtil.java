@@ -1,6 +1,6 @@
-package rip.shuka.core.corrector;
+package rip.shuka.core.utils;
 
-public class StringCorrector {
+public class StringCorrectorUtil {
     public static String correctForConsole(String str) {
         // Basic Escape Sequences & \s for spaces
         str = str.replace("\\t", "\t").replace("\\n", "\n").replace("\\s", " ");

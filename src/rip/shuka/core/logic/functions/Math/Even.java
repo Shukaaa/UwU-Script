@@ -1,13 +1,13 @@
 package rip.shuka.core.logic.functions.Math;
 
-import rip.shuka.core.logic.LogicElement;
+import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.datatypes.Datatype;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 import rip.shuka.core.logic.datatypes.types.Boolean;
 import rip.shuka.core.logic.datatypes.types.Integer;
 import rip.shuka.core.logic.parameter.Parameter;
 
-public class Even extends LogicElement {
+public class Even extends Function {
     public Even() {
         super("even", new Parameter[]{
                 new Parameter(null, new Datatype[]{ new Integer() }, "check if even")

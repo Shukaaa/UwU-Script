@@ -1,12 +1,10 @@
 package rip.shuka.core.logic.functions;
 
-import rip.shuka.core.logic.LogicElement;
-
 public class FunctionHolder {
     private final String name;
-    private final LogicElement[] functions;
+    private final Function[] functions;
 
-    public FunctionHolder(String name, LogicElement[] functions) {
+    public FunctionHolder(String name, Function[] functions) {
         this.name = name;
         this.functions = functions;
     }
@@ -15,7 +13,7 @@ public class FunctionHolder {
         return name;
     }
 
-    public LogicElement[] getFunctions() {
+    public Function[] getFunctions() {
         return functions;
     }
 }

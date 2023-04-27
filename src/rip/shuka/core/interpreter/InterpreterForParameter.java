@@ -14,40 +14,8 @@ import static rip.shuka.core.interpreter.Interpreter.interpretLine;
 
 public class InterpreterForParameter {
     public static DatatypeObject[] interpretParameter(String given_parameter, Parameter[] parameters, int lineNumber, int position, String func) {
-        Pattern regexPattern = Pattern.compile(",(?=[^()]*\\()");
-        Matcher match = regexPattern.matcher(given_parameter + "()");
-
-        // Get Position of regex ,
-        ArrayList<Integer> position_arr = new ArrayList<>();
-        while (match.find()) {
-            position_arr.add(match.start());
-        }
-
-        // Splice parameter String
-        String[] given_parameters = new String[]{given_parameter};
-        if (position_arr.size() != 0) {
-            ArrayList<String> given_parameters_arr = new ArrayList<>();
-            for (int index = 0; index < position_arr.size(); index++) {
-                if (index == 0) {
-                    given_parameters_arr.add(given_parameter.substring(0, position_arr.get(index)));
-                    continue;
-                }
-
-                given_parameters_arr.add(given_parameter.substring(position_arr.get(index-1)+1, position_arr.get(index)));
-            }
-
-            given_parameters_arr.add(given_parameter.substring(position_arr.get(position_arr.size()-1)+1));
-            given_parameters = given_parameters_arr.toArray(new String[0]);
-        }
-
-        int required_parameter = 0;
-
-        for (Parameter parameter : parameters) {
-            if (parameter.isRequired()) {
-                required_parameter++;
-            }
-        }
-
+        String[] given_parameters = splitGivenParameter(given_parameter);
+        int required_parameter = getRequiredParameters(parameters);
 
         for (String parameter : given_parameters) {
             if (Objects.equals(parameter, "")) {
@@ -90,5 +58,48 @@ public class InterpreterForParameter {
         }
 
         return interpretedParameters;
+    }
+
+    private static String[] splitGivenParameter(String given_parameter) {
+        // Regex config
+        Pattern regexPattern = Pattern.compile(",(?=[^()]*\\()");
+        Matcher match = regexPattern.matcher(given_parameter + "()");
+
+        // Get Position of regex ,
+        ArrayList<Integer> position_arr = new ArrayList<>();
+        while (match.find()) {
+            position_arr.add(match.start());
+        }
+
+        // Splice parameter String
+        String[] given_parameters = new String[]{given_parameter};
+        if (position_arr.size() != 0) {
+            ArrayList<String> given_parameters_arr = new ArrayList<>();
+            for (int index = 0; index < position_arr.size(); index++) {
+                if (index == 0) {
+                    given_parameters_arr.add(given_parameter.substring(0, position_arr.get(index)));
+                    continue;
+                }
+
+                given_parameters_arr.add(given_parameter.substring(position_arr.get(index-1)+1, position_arr.get(index)));
+            }
+
+            given_parameters_arr.add(given_parameter.substring(position_arr.get(position_arr.size()-1)+1));
+            given_parameters = given_parameters_arr.toArray(new String[0]);
+        }
+
+        return given_parameters;
+    }
+
+    private static int getRequiredParameters(Parameter[] parameters) {
+        int required_parameter = 0;
+
+        for (Parameter parameter : parameters) {
+            if (parameter.isRequired()) {
+                required_parameter++;
+            }
+        }
+
+        return required_parameter;
     }
 }
