@@ -35,10 +35,6 @@ cast.int(value)
 # Input Function
 console.ask(message)
 
-# More Consolelogs
-console.miku() = blue
-
-
 # Arrays
 array.create(name, type)
 array.count(name)
