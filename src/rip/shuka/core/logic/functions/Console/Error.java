@@ -6,6 +6,7 @@ import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.datatypes.types.Any;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 import rip.shuka.core.logic.datatypes.types.Null;
+import rip.shuka.core.utils.StringCorrectorUtil;
 
 public class Error extends Function {
     public Error() {
@@ -16,7 +17,7 @@ public class Error extends Function {
 
     @Override
     public DatatypeObject execute(DatatypeObject[] args) {
-        System.err.println(args[0].value());
+        System.err.println(StringCorrectorUtil.correctForConsole(args[0].value()));
         return new DatatypeObject(new Null(), null);
     }
 }

@@ -1,0 +1,4 @@
+// How to use Variables
+
+vars.uwu(str<Name>, str<Asuna>)         // uwu for variable declaration
+console.moan(vars.owo(str<Name>))       // owo for access the variable

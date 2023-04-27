@@ -1,0 +1,3 @@
+// System Functions
+
+sys.sayonara(str<Bye\sBye\sSenpai!>)       // Sayonara Exit the programm (message is optional parameter)

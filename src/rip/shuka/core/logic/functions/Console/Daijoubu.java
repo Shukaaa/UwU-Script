@@ -6,6 +6,7 @@ import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.datatypes.types.Any;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 import rip.shuka.core.logic.datatypes.types.Null;
+import rip.shuka.core.utils.StringCorrectorUtil;
 
 public class Daijoubu extends Function {
     public Daijoubu() {
@@ -16,7 +17,7 @@ public class Daijoubu extends Function {
 
     @Override
     public DatatypeObject execute(DatatypeObject[] args) {
-        System.out.println("\u001B[32m" + args[0].value() + "\u001B[0m");
+        System.out.println("\u001B[32m" + StringCorrectorUtil.correctForConsole(args[0].value()) + "\u001B[0m");
         return new DatatypeObject(new Null(), null);
     }
 }

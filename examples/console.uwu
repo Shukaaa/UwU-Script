@@ -1,0 +1,5 @@
+// Console Interactions
+
+console.daijoubu(str<Green\sOutput>)
+console.error(str<Red\sOutput>)
+console.moan(str<Normal\sOutput>)

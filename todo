@@ -8,17 +8,72 @@
 - Round to a specific number of decimal places
 - All Java Math Functions rip-off
 
-- If Else
-- Loop For
-- Casting von Datentypen
-- Functions
-- Arrays
-- Input Function
+# String operator
+str.append(str1, str2) // trying to add infinity parameters
+str.arr_append(str_array)
+str.length(str)
+str.yukihara(str, delimiter) // output array with strings (cutting the string like soma yukihara)
+str.startWith()
+str.endsWith()
+
+# Datentypen access
+z.B. types.int()
+
+# Logic (logic.and())
+- and
+- or
+- not
+- is_type (Datentyp abfrage)
+- is (==)
+- greater (>)
+- less (<)
+- greater_is (>=)
+- less_is (<=)
+
+# Casting
+cast.int(value)
+
+# Input Function
+console.ask(message)
+
+# Arrays
+array.create(name, type)
+array.count(name)
+array.pos(name, value)
+array.add(name, value)
+array.rem(name, index)
+array.get(name, index)
+
+# If Else
+
+logic.if(statement)
+...
+logic.if_ends()
+
+
+logic.if_else(statement)
+...
+logic.elseif(statement, elseAmounts)
+...
+logic.else(statement, elseAmounts)
+...
+logic.if_else_ends()
+
+
+# Loops
+loop.while()
+loop.for()
+loop.for_each()
+
+# Function
+func.define(name, func.param(type, optional_default_value))
+func.end()
+
 
 # Big Tasks
 - Repo hübsch machen mit ReadMe etc.
 - Create VS Code Plugin
 - Create IntelliJ Plugin
-- Installer & CLI for the Language
+- Installer & CLI for the Language (Normaler Download & Maybe NPM)
 - Dokumentationsseite mit Angular erstellen
 - Webseite hosten und alles public zur Verfügung stellen
