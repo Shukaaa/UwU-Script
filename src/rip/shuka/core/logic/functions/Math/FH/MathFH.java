@@ -17,6 +17,7 @@ public class MathFH extends FunctionHolder {
             new Pow(),
             new Sqrt(),
             new Cbrt(),
+            new Log(),
         });
     }
 }
