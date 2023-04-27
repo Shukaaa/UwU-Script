@@ -37,7 +37,7 @@ public class Interpreter {
             }
 
             // Check each functionHolder
-            for (FunctionHolder functionHolder : LogicCollection.functionHolder) {
+            for (FunctionHolder functionHolder : LogicRegister.functionHolder) {
                 // Function [fh.func()] matching only the beginning of the string
                 if (argument.startsWith(functionHolder.getName() + ".")) {
                     for (Function logicElement : functionHolder.getFunctions()) {
@@ -66,7 +66,7 @@ public class Interpreter {
     }
 
     private static DatatypeObject[] checkForComments(String argument) {
-        if (argument.startsWith(LogicCollection.comments.getIdentifier())) {
+        if (argument.startsWith(LogicRegister.comments.getIdentifier())) {
             return new DatatypeObject[0];
         }
 

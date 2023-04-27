@@ -14,7 +14,7 @@ import rip.shuka.core.logic.functions.Math.FH.MathFH;
 import rip.shuka.core.logic.functions.System.FH.SystemFH;
 import rip.shuka.core.logic.functions.Variables.FH.VariablesFH;
 
-public class LogicCollection {
+public class LogicRegister {
     public static BaseElement comments = new Comments();
 
     public static FunctionHolder[] functionHolder = {

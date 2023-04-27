@@ -2,7 +2,7 @@ package rip.shuka.core.interpreter;
 
 import rip.shuka.core.utils.ErrorUtil;
 import rip.shuka.core.logic.datatypes.Datatype;
-import rip.shuka.core.logic.LogicCollection;
+import rip.shuka.core.logic.LogicRegister;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 
 import java.util.Objects;
@@ -19,7 +19,7 @@ public class InterpreterForDatatype {
         }
 
         DatatypeObject result;
-        for (Datatype datatype : LogicCollection.datatypes) {
+        for (Datatype datatype : LogicRegister.datatypes) {
             result = interpretString(datatype, argument);
             if (result != null) { return result; }
 
