@@ -7,3 +7,6 @@ console.moan(math.div(int<100>, int<2>))            // /
 console.moan(math.mod(int<100>, float<26.2>))       // %
 console.moan(math.even(int<100>))                   // even
 console.moan(math.odd(int<100>))                    // odd
+console.moan(math.pow(int<2>, int<4>))              // exponential power
+console.moan(math.sqrt(int<4>))                     // √
+console.moan(math.cbrt(int<4>))                     // ³√

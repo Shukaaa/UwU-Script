@@ -1,6 +1,4 @@
 # Mathematische Funktionen
-- Exponentiation/Powers (^)
-- Square root (√)
 - Logarithm (log)
 - Exponential function (exp)
 - Trigonometric functions (sin, cos, tan, asin, acos, atan)
@@ -8,6 +6,7 @@
 - Round up (ceil)
 - Round down (floor)
 - Round to a specific number of decimal places
+- All Java Math Functions rip-off
 
 - If Else
 - Loop For

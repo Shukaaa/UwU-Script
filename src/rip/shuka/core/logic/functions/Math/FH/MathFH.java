@@ -14,6 +14,9 @@ public class MathFH extends FunctionHolder {
             new Mod(),
             new Even(),
             new Odd(),
+            new Pow(),
+            new Sqrt(),
+            new Cbrt(),
         });
     }
 }
