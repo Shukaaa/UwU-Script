@@ -15,7 +15,8 @@ str.startWith()
 str.endsWith()
 
 # Datentypen access
-z.B. types.int()
+type<int>
+type<str>
 
 # Logic (logic.and())
 - and
@@ -33,6 +34,10 @@ cast.int(value)
 
 # Input Function
 console.ask(message)
+
+# More Consolelogs
+console.miku() = blue
+
 
 # Arrays
 array.create(name, type)
@@ -57,7 +62,6 @@ logic.else(statement, elseAmounts)
 ...
 logic.if_else_ends()
 
-
 # Loops
 loop.while()
 loop.for()
@@ -67,6 +71,9 @@ loop.for_each()
 func.define(name, func.param(type, optional_default_value))
 func.end()
 
+# Checkpoints are used to switch to a new part of the code
+checkpoint.set(name)
+checkpoint.teleport(name)
 
 # Big Tasks
 - Repo hübsch machen mit ReadMe etc.

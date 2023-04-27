@@ -1,5 +1,9 @@
 // Console Interactions
 
-console.daijoubu(str<Green\sOutput>)
+// vars.uwu(str<Name>, console.ask(str<Wie\sheißt\sdu?>))  // Input
+
+console.daijoubu(str<Daijoubu\sOutput>)
 console.error(str<Red\sOutput>)
 console.moan(str<Normal\sOutput>)
+console.cherry_blossom(str<Cherry\sBlossom\sOutput>)
+console.zenitsu(str<Zenitsu\sOutput>)
