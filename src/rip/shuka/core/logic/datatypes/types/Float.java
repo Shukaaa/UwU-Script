@@ -4,6 +4,6 @@ import rip.shuka.core.logic.datatypes.Datatype;
 
 public class Float extends Datatype {
     public Float() {
-        super("float", java.lang.Float.class);
+        super("float");
     }
 }

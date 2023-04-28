@@ -1,6 +1,7 @@
 // Console Interactions
 
-// vars.uwu(str<Name>, console.ask(str<Wie\sheißt\sdu?>))  // Input
+//vars.uwu(str<Name>, console.ask(str<Wie\sheißt\sdu?>))  // Input
+//console.cherry_blossom(vars.owo(str<Name>))
 
 console.daijoubu(str<Daijoubu\sOutput>)
 console.error(str<Red\sOutput>)

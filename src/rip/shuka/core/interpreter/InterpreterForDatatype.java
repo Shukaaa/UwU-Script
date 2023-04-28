@@ -5,7 +5,6 @@ import rip.shuka.core.logic.datatypes.Datatype;
 import rip.shuka.core.logic.LogicRegister;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +42,7 @@ public class InterpreterForDatatype {
     }
 
     private static DatatypeObject interpretInteger(Datatype datatype, String argument, int lineNumber) {
-        if (datatype.getType() == Integer.class && argument.startsWith(datatype.getName())) {
+        if (argument.startsWith(datatype.getName())) {
             if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
                 String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
 
@@ -60,7 +59,7 @@ public class InterpreterForDatatype {
     }
 
     private static DatatypeObject interpretString(Datatype datatype, String argument) {
-        if (datatype.getType() == String.class && (argument.startsWith(datatype.getName())) && Objects.equals(datatype.getName(), "str")) {
+        if (argument.startsWith(datatype.getName())) {
             if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
                 return new DatatypeObject(datatype, argument.substring(datatype.getName().length() + 1, argument.length() - 1));
             }
@@ -70,7 +69,7 @@ public class InterpreterForDatatype {
     }
 
     private static DatatypeObject interpretFloat(Datatype datatype, String argument, int lineNumber) {
-        if (datatype.getType() == Float.class && argument.startsWith(datatype.getName())) {
+        if (argument.startsWith(datatype.getName())) {
             if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
                 String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
 
@@ -88,7 +87,7 @@ public class InterpreterForDatatype {
     }
 
     private static DatatypeObject interpretBoolean(Datatype datatype, String argument, int lineNumber) {
-        if (datatype.getType() == Boolean.class && argument.startsWith(datatype.getName())) {
+        if (argument.startsWith(datatype.getName())) {
             if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
                 String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
 
@@ -107,7 +106,7 @@ public class InterpreterForDatatype {
     }
 
     private static DatatypeObject interpretAny(Datatype datatype, String argument) {
-        if (datatype.getType() == String.class && (argument.startsWith(datatype.getName())) && Objects.equals(datatype.getName(), "any")) {
+        if (argument.startsWith(datatype.getName())) {
             if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
                 return new DatatypeObject(datatype, argument.substring(datatype.getName().length() + 1, argument.length() - 1));
             }
@@ -117,7 +116,7 @@ public class InterpreterForDatatype {
     }
 
     private static DatatypeObject interpretNull(Datatype datatype, String argument) {
-        if (datatype.getType() == null && (argument.startsWith(datatype.getName()))) {
+        if (argument.startsWith(datatype.getName())) {
             if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
                 return new DatatypeObject(datatype, null);
             }
