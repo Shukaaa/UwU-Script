@@ -19,10 +19,6 @@ I would love to have your help in improving UwU-Script!
 If you find any bugs or have suggestions for new features, please feel free to submit a pull request.
 I'm also open to any suggestions or feedback you may have.
 
-## License
-
-UwU-Script is released under the [MIT License](https://github.com/<username>/<repository-name>/blob/main/LICENSE), which allows for the free use and distribution of the project.
-
 ## Contact
 
 If you have any questions or concerns about the project, please feel free to reach out to me via email or by opening an issue in the repository.
