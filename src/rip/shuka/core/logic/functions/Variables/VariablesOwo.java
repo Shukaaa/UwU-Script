@@ -22,7 +22,7 @@ public class VariablesOwo extends Function {
         try {
             return variable.datatypeObject();
         } catch (NullPointerException e) {
-            ErrorUtil.callError("Variable <" + args[0].value() + "> has not been initialized");
+            ErrorUtil.callError("Variable <" + args[0].value() + "> has not been initialized.");
             return null;
         }
     }

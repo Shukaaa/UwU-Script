@@ -36,8 +36,4 @@ public class VariableStore {
         }
         return null;
     }
-
-    public Variable[] getVariables() {
-        return variables;
-    }
 }
