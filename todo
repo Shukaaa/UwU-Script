@@ -19,11 +19,6 @@ type<int>
 type<str>
 
 # Logic (logic.and())
-- and
-- or
-- not
-- is_type (Datentyp abfrage)
-- is (==)
 - greater (>)
 - less (<)
 - greater_is (>=)

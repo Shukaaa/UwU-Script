@@ -3,7 +3,9 @@ package rip.shuka.core.logic.parameter;
 import rip.shuka.core.logic.datatypes.Datatype;
 
 public class Parameter {
+    // If a value is set, it is an optional parameter, if it shouldn't be an optional parameter always type null
     String value;
+    // No use case rn, but maybe later xd?
     String description;
     Datatype[] types;
 

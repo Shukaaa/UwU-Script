@@ -1,0 +1,24 @@
+// Logic
+
+console.moan(logic.and(bool<true>, bool<true>))         // &&
+console.moan(logic.or(bool<false>, bool<false>))        // ||
+console.moan(logic.not(bool<false>))                    // !
+
+// Is Functions
+
+console.zenitsu(logic.is(str<a>, str<a>))
+console.zenitsu(logic.is(str<a>, str<b>))
+console.zenitsu(logic.is(str<1>, int<1>))
+console.zenitsu(logic.is(str<1>, int<10>))
+
+console.cherry_blossom(logic.is_same(str<a>, str<a>))
+console.cherry_blossom(logic.is_same(str<a>, str<b>))
+console.cherry_blossom(logic.is_same(str<1>, int<1>))
+console.cherry_blossom(logic.is_same(str<1>, int<10>))
+
+console.zenitsu(logic.is_type(str<a>, str<str>))
+console.zenitsu(logic.is_type(str<a>, str<int>))
+console.zenitsu(logic.is_type(int<1>, str<int>))
+
+console.cherry_blossom(logic.is_same_type(str<1>, int<10>))
+console.cherry_blossom(logic.is_same_type(str<1>, str<10>))
