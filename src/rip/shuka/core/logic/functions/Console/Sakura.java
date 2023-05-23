@@ -9,9 +9,9 @@ import rip.shuka.core.logic.parameter.Parameter;
 import rip.shuka.core.utils.ColorUtil;
 import rip.shuka.core.utils.StringCorrectorUtil;
 
-public class CherryBlossom extends Function {
-    public CherryBlossom() {
-        super("cherry_blossom", new Parameter[] {
+public class Sakura extends Function {
+    public Sakura() {
+        super("sakura", new Parameter[] {
                 new Parameter(null, new Datatype[] { new Any() }, "The text to display as pink")
         });
     }

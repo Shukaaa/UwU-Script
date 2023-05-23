@@ -12,7 +12,7 @@ public class ConsoleFH extends FunctionHolder {
                 new Error(),
                 new Moan(),
                 new Ask(),
-                new CherryBlossom(),
+                new Sakura(),
                 new Zenitsu(),
         });
     }
