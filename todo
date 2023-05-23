@@ -14,9 +14,6 @@ str.yukihara(str, delimiter) // output array with strings (cutting the string li
 str.startWith()
 str.endsWith()
 
-# Casting
-cast.int(value)
-
 # Arrays
 array.create(name, type)
 array.count(name)
