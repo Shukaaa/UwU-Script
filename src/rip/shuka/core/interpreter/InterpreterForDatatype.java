@@ -2,7 +2,6 @@ package rip.shuka.core.interpreter;
 
 import rip.shuka.core.utils.ErrorUtil;
 import rip.shuka.core.logic.datatypes.Datatype;
-import rip.shuka.core.logic.LogicRegister;
 import rip.shuka.core.logic.datatypes.DatatypeObject;
 
 import java.util.regex.Matcher;
@@ -17,111 +16,80 @@ public class InterpreterForDatatype {
             return null;
         }
 
-        DatatypeObject result;
-        for (Datatype datatype : LogicRegister.datatypes) {
-            result = interpretString(datatype, argument);
-            if (result != null) { return result; }
+        if (argument.startsWith("str")) {
+            return interpretString(new rip.shuka.core.logic.datatypes.types.String(), argument);
+        }
 
-            result = interpretInteger(datatype, argument, lineNumber);
-            if (result != null) { return result; }
+        if (argument.startsWith("int")) {
+            return interpretInteger(new rip.shuka.core.logic.datatypes.types.Integer(), argument, lineNumber);
+        }
 
-            result = interpretFloat(datatype, argument, lineNumber);
-            if (result != null) { return result; }
+        if (argument.startsWith("float")) {
+            return interpretFloat(new rip.shuka.core.logic.datatypes.types.Float(), argument, lineNumber);
+        }
 
-            result = interpretBoolean(datatype, argument, lineNumber);
-            if (result != null) { return result; }
+        if (argument.startsWith("bool")) {
+            return interpretBoolean(new rip.shuka.core.logic.datatypes.types.Boolean(), argument, lineNumber);
+        }
 
-            result = interpretAny(datatype, argument);
-            if (result != null) { return result; }
+        if (argument.startsWith("any")) {
+            return interpretAny(new rip.shuka.core.logic.datatypes.types.Any(), argument);
+        }
 
-            result = interpretNull(datatype, argument);
-            if (result != null) { return result; }
+        if (argument.startsWith("null")) {
+            return interpretNull(new rip.shuka.core.logic.datatypes.types.Null());
         }
 
         return null;
     }
 
     private static DatatypeObject interpretInteger(Datatype datatype, String argument, int lineNumber) {
-        if (argument.startsWith(datatype.getName())) {
-            if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
-                String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
+        String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
 
-                try {
-                    Integer.parseInt(data);
-                } catch (NumberFormatException e) {
-                    ErrorUtil.callError("Datatype <" + datatype.getName() + "> at line " + lineNumber + " is not a valid integer.");
-                }
-                return new DatatypeObject(datatype, data);
-            }
+        try {
+            Integer.parseInt(data);
+        } catch (NumberFormatException e) {
+            ErrorUtil.callError(argument + " at line " + lineNumber + " is not a valid integer.");
         }
-
-        return null;
+        return new DatatypeObject(datatype, data);
     }
 
     private static DatatypeObject interpretString(Datatype datatype, String argument) {
-        if (argument.startsWith(datatype.getName())) {
-            if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
-                return new DatatypeObject(datatype, argument.substring(datatype.getName().length() + 1, argument.length() - 1));
-            }
-        }
-
-        return null;
+        return new DatatypeObject(datatype, argument.substring(datatype.getName().length() + 1, argument.length() - 1));
     }
 
     private static DatatypeObject interpretFloat(Datatype datatype, String argument, int lineNumber) {
-        if (argument.startsWith(datatype.getName())) {
-            if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
-                String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
+        String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
 
-                try {
-                    Double.parseDouble(data);
-                } catch (NumberFormatException e) {
-                    ErrorUtil.callError("Datatype <" + datatype.getName() + "> at line " + lineNumber + " is not a valid float.");
-                }
-
-                return new DatatypeObject(datatype, data);
-            }
+        try {
+            Double.parseDouble(data);
+        } catch (NumberFormatException e) {
+            ErrorUtil.callError(argument + " at line " + lineNumber + " is not a valid float.");
         }
 
-        return null;
+        return new DatatypeObject(datatype, data);
     }
 
     private static DatatypeObject interpretBoolean(Datatype datatype, String argument, int lineNumber) {
-        if (argument.startsWith(datatype.getName())) {
-            if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
-                String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
-
-                boolean bool = Boolean.FALSE;
-                try {
-                    bool = Boolean.parseBoolean(data);
-                } catch (Exception e) {
-                    ErrorUtil.callError("Datatype <" + datatype.getName() + "> at line " + lineNumber + " is not a boolean.");
-                }
-
-                return new DatatypeObject(datatype, bool ? "true" : "false");
+        String data = argument.substring(datatype.getName().length() + 1, argument.length() - 1);
+        switch (data) {
+            case "true" -> {
+                return new DatatypeObject(datatype, "true");
             }
+            case "false" -> {
+                return new DatatypeObject(datatype, "false");
+            }
+            default -> ErrorUtil.callError(argument + " at line " + lineNumber + " is not a boolean.");
         }
 
         return null;
     }
 
     private static DatatypeObject interpretAny(Datatype datatype, String argument) {
-        if (argument.startsWith(datatype.getName())) {
-            if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
-                return new DatatypeObject(datatype, argument.substring(datatype.getName().length() + 1, argument.length() - 1));
-            }
-        }
-
-        return null;
+        return new DatatypeObject(datatype, argument.substring(datatype.getName().length() + 1, argument.length() - 1));
     }
 
-    private static DatatypeObject interpretNull(Datatype datatype, String argument) {
-        if (argument.startsWith(datatype.getName())) {
-            if (argument.startsWith(datatype.getName() + "<") && argument.endsWith(">")) {
-                return new DatatypeObject(datatype, null);
-            }
-        }
-
-        return null;
+    private static DatatypeObject interpretNull(Datatype datatype) {
+        return new DatatypeObject(datatype, null);
     }
 }
