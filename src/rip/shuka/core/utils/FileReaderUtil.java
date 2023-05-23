@@ -16,9 +16,7 @@ public class FileReaderUtil {
 
             for (int i = 0; i < lines.length; i++) {
                 int finalI = i;
-                Thread thread = new Thread(() -> {
-                    Interpreter.interpretLine(lines[finalI], finalI + 1);
-                });
+                Thread thread = new Thread(() -> Interpreter.interpretLine(lines[finalI], finalI + 1));
 
                 thread.start();
                 thread.join();

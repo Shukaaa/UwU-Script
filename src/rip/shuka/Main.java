@@ -32,6 +32,7 @@ public class Main {
 
             if (file == null) { ErrorUtil.callError("Kein Pfad wurde ausgewählt"); }
 
+            assert file != null;
             if (!file.endsWith(".uwu")) {
                 file = file + ".uwu";
             }

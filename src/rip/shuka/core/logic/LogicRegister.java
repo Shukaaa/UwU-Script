@@ -16,9 +16,9 @@ import rip.shuka.core.logic.functions.System.FH.SystemFH;
 import rip.shuka.core.logic.functions.Variables.FH.VariablesFH;
 
 public class LogicRegister {
-    public static BaseElement comments = new Comments();
+    public static final BaseElement comments = new Comments();
 
-    public static FunctionHolder[] functionHolder = {
+    public static final FunctionHolder[] functionHolder = {
             new ConsoleFH(),
             new SystemFH(),
             new VariablesFH(),
@@ -26,7 +26,7 @@ public class LogicRegister {
             new LogicFH()
     };
 
-    public static Datatype[] datatypes = {
+    public static final Datatype[] datatypes = {
             new Integer(),
             new String(),
             new Float(),

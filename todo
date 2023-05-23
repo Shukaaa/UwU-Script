@@ -1,9 +1,9 @@
 # Mathematische Funktionen
-- Trigonometric functions (sin, cos, tan, asin, acos, atan)
 - Round to the nearest integer (round)
 - Round up (ceil)
 - Round down (floor)
 - Round to a specific number of decimal places
+- Pi
 - All Java Math Functions rip-off
 
 # String operator
