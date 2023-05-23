@@ -18,6 +18,9 @@ public class MathFH extends FunctionHolder {
             new Sqrt(),
             new Cbrt(),
             new Log(),
+            new Sin(),
+            new Cos(),
+            new Tan()
         });
     }
 }
