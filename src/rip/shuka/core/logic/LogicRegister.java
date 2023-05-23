@@ -1,13 +1,8 @@
 package rip.shuka.core.logic;
 
 import rip.shuka.core.logic.base.BaseElement;
-import rip.shuka.core.logic.datatypes.*;
-import rip.shuka.core.logic.datatypes.types.*;
-import rip.shuka.core.logic.datatypes.types.Boolean;
-import rip.shuka.core.logic.datatypes.types.Float;
-import rip.shuka.core.logic.datatypes.types.Integer;
-import rip.shuka.core.logic.datatypes.types.String;
 import rip.shuka.core.logic.base.elements.Comments;
+import rip.shuka.core.logic.functions.Cast.FH.CastFH;
 import rip.shuka.core.logic.functions.Console.FH.ConsoleFH;
 import rip.shuka.core.logic.functions.FunctionHolder;
 import rip.shuka.core.logic.functions.Logic.FH.LogicFH;
@@ -23,15 +18,7 @@ public class LogicRegister {
             new SystemFH(),
             new VariablesFH(),
             new MathFH(),
-            new LogicFH()
-    };
-
-    public static final Datatype[] datatypes = {
-            new Integer(),
-            new String(),
-            new Float(),
-            new Any(),
-            new Boolean(),
-            new Null()
+            new LogicFH(),
+            new CastFH()
     };
 }
