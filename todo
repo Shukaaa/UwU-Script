@@ -14,21 +14,8 @@ str.yukihara(str, delimiter) // output array with strings (cutting the string li
 str.startWith()
 str.endsWith()
 
-# Datentypen access
-type<int>
-type<str>
-
-# Logic (logic.and())
-- greater (>)
-- less (<)
-- greater_is (>=)
-- less_is (<=)
-
 # Casting
 cast.int(value)
-
-# Input Function
-console.ask(message)
 
 # Arrays
 array.create(name, type)
