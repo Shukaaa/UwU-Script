@@ -1,13 +1,10 @@
-// Console Interactions
-
-//vars.uwu(str<Name>, console.ask(str<Wie\sheißt\sdu?>))  // Input
-//console.cherry_blossom(vars.owo(str<Name>))
-
-console.daijoubu(str<Daijoubu\sOutput>)
-console.error(str<Red\sOutput>)
-console.moan(str<Normal\sOutput>)
-console.sakura(str<Sakura\sOutput>)
-console.zenitsu(str<Zenitsu\sOutput>)
-
-// Infinity Params
-console.daijoubu(str<Daijoubu\sOutput>, str<with>, str<multiple>, str<params>)
+arr.create(str<a>)
+arr.add(str<a>, str<a>)
+arr.add(str<a>, str<b>)
+arr.add(str<a>, str<c>)
+arr.replace(str<a>, str<y>, int<1>)
+arr.add(str<a>, str<x>, int<2>)
+arr.rem(str<a>, int<3>)
+arr.moan(str<a>)
+console.moan(arr.len(str<a>))
+console.moan(arr.stringify(str<a>, str<\c\s>))

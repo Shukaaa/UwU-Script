@@ -2,6 +2,7 @@ package rip.shuka.core.logic;
 
 import rip.shuka.core.logic.base.BaseElement;
 import rip.shuka.core.logic.base.elements.Comments;
+import rip.shuka.core.logic.functions.Arrays.FH.ArrayFH;
 import rip.shuka.core.logic.functions.Cast.FH.CastFH;
 import rip.shuka.core.logic.functions.Console.FH.ConsoleFH;
 import rip.shuka.core.logic.functions.FunctionHolder;
@@ -19,6 +20,7 @@ public class LogicRegister {
             new VariablesFH(),
             new MathFH(),
             new LogicFH(),
-            new CastFH()
+            new CastFH(),
+            new ArrayFH()
     };
 }
