@@ -8,19 +8,15 @@
 
 # String operator
 str.append(str1, str2) // trying to add infinity parameters
-str.arr_append(str_array)
 str.length(str)
 str.yukihara(str, delimiter) // output array with strings (cutting the string like soma yukihara)
 str.startWith()
 str.endsWith()
 
-# Arrays
-array.create(name, type)
-array.count(name)
-array.pos(name, value)
-array.add(name, value)
-array.rem(name, index)
-array.get(name, index)
+# Array Sorts
+array.sort(name, sort_type)
+array.sort(name, sort_type, sort_order)
+
 
 # If Else
 
@@ -31,9 +27,9 @@ logic.if_ends()
 
 logic.if_else(statement)
 ...
-logic.elseif(statement, elseAmounts)
+logic.elseif(statement)
 ...
-logic.else(statement, elseAmounts)
+logic.else()
 ...
 logic.if_else_ends()
 
@@ -41,6 +37,7 @@ logic.if_else_ends()
 loop.while()
 loop.for()
 loop.for_each()
+loop.end()
 
 # Function
 func.define(name, func.param(type, optional_default_value))
@@ -51,9 +48,7 @@ checkpoint.set(name)
 checkpoint.teleport(name)
 
 # Big Tasks
-- Repo hübsch machen mit ReadMe etc.
 - Create VS Code Plugin
 - Create IntelliJ Plugin
-- Installer & CLI for the Language (Normaler Download & Maybe NPM)
 - Dokumentationsseite mit Angular erstellen
 - Webseite hosten und alles public zur Verfügung stellen
