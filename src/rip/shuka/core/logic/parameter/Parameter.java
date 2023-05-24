@@ -8,11 +8,20 @@ public class Parameter {
     // No use case rn, but maybe later xd?
     final String description;
     final Datatype[] types;
+    boolean infinityParam = false;
 
     public Parameter(String value, Datatype[] types, String description) {
         this.value = value;
         this.types = types;
         this.description = description;
+    }
+
+    public void beInfinityParam() {
+        infinityParam = true;
+    }
+
+    public boolean isInifinity() {
+        return infinityParam;
     }
 
     public String getValue() {

@@ -16,34 +16,53 @@ public class InterpreterForParameter {
     public static DatatypeObject[] interpretParameter(String given_parameter, Parameter[] parameters, int lineNumber, int position, String func) {
         String[] given_parameters = splitGivenParameter(given_parameter);
         int required_parameter = getRequiredParameters(parameters);
+        boolean has_infinity_parameter = checkIfInfinityParameter(parameters);
 
         for (String parameter : given_parameters) {
             if (Objects.equals(parameter, "")) {
                 if (required_parameter == 0) {
                     return new DatatypeObject[0];
                 } else {
-                    ErrorUtil.callError("The function <" + func + "> on line " + lineNumber + " and position " + position + " has an empty parameter.");
+                    given_parameters = new String[0];
                 }
             }
         }
 
-        if (given_parameters.length != parameters.length) {
+        if (given_parameters.length < required_parameter) {
+            ErrorUtil.callError("The function <" + func + "> has " + required_parameter + " required parameters but " + given_parameters.length + " were given.");
+        }
+
+        if (given_parameters.length != parameters.length && !has_infinity_parameter) {
             ErrorUtil.callError("The function <" + func + "> has " + parameters.length + " parameters but " + given_parameters.length + " were given.");
         }
 
         DatatypeObject[] interpretedParameters = new DatatypeObject[given_parameters.length];
 
+        int infinity_pos = -1;
         for (int i = 0; i < given_parameters.length; i++) {
+            if (infinity_pos == -1) {
+                if (parameters[i].isInifinity()) {
+                    infinity_pos = i;
+                }
+            }
+
             DatatypeObject interpretedParameter = InterpreterForDatatype.interpretDatatype(given_parameters[i], lineNumber);
 
             if (interpretedParameter == null) {
                 interpretedParameter = interpretLine(given_parameters[i], lineNumber)[0];
             }
 
-            if (!interpretedParameter.isValidDatatype(parameters[i].getTypes())) {
+            boolean validDatatypeCheck;
+            if (infinity_pos == -1) {
+                validDatatypeCheck = !interpretedParameter.isValidDatatype(parameters[i].getTypes());
+            } else {
+                validDatatypeCheck = !interpretedParameter.isValidDatatype(parameters[infinity_pos].getTypes());
+            }
+
+            if (validDatatypeCheck) {
                 StringBuilder allowedDatatypes = new StringBuilder();
 
-                for (Datatype datatype : parameters[i].getTypes()) {
+                for (Datatype datatype : parameters[infinity_pos == -1 ? i : infinity_pos].getTypes()) {
                     allowedDatatypes.append(datatype.getName()).append(", ");
                 }
 
@@ -101,5 +120,18 @@ public class InterpreterForParameter {
         }
 
         return required_parameter;
+    }
+
+    private static boolean checkIfInfinityParameter(Parameter[] parameters) {
+        boolean infinity_param = false;
+
+        for (Parameter parameter : parameters) {
+            if (parameter.isInifinity()) {
+                infinity_param = true;
+                break;
+            }
+        }
+
+        return infinity_param;
     }
 }
