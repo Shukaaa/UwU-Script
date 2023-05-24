@@ -16,7 +16,6 @@ public class InterpreterForParameter {
     public static DatatypeObject[] interpretParameter(String given_parameter, Parameter[] parameters, int lineNumber, int position, String func) {
         String[] given_parameters = splitGivenParameter(given_parameter);
         int required_parameter = getRequiredParameters(parameters);
-        boolean has_infinity_parameter = checkIfInfinityParameter(parameters);
 
         for (String parameter : given_parameters) {
             if (Objects.equals(parameter, "")) {
@@ -32,8 +31,8 @@ public class InterpreterForParameter {
             ErrorUtil.callError("The function <" + func + "> has " + required_parameter + " required parameters but " + given_parameters.length + " were given.");
         }
 
-        if (given_parameters.length != parameters.length && !has_infinity_parameter) {
-            ErrorUtil.callError("The function <" + func + "> has " + parameters.length + " parameters but " + given_parameters.length + " were given.");
+        if (given_parameters.length > parameters.length && !anyParameterIsInfinity(parameters)) {
+            ErrorUtil.callError("The function <" + func + "> has " + required_parameter + " parameters but " + given_parameters.length + " were given.");
         }
 
         DatatypeObject[] interpretedParameters = new DatatypeObject[given_parameters.length];
@@ -41,8 +40,12 @@ public class InterpreterForParameter {
         int infinity_pos = -1;
         for (int i = 0; i < given_parameters.length; i++) {
             if (infinity_pos == -1) {
-                if (parameters[i].isInifinity()) {
-                    infinity_pos = i;
+                try {
+                    if (parameters[i].isInifinity()) {
+                        infinity_pos = i;
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    break;
                 }
             }
 
@@ -74,6 +77,25 @@ public class InterpreterForParameter {
             }
 
             interpretedParameters[i] = interpretedParameter;
+        }
+
+        // check for optional parameter
+        if (interpretedParameters.length < parameters.length) {
+            DatatypeObject[] interpretedParametersNew = new DatatypeObject[0];
+            for (int i = 0; i < parameters.length; i++) {
+                try {
+                    interpretedParameters[i] = interpretedParameters[i];
+                    interpretedParametersNew = interpretedParameters;
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    // add array length +1
+                    interpretedParametersNew = new DatatypeObject[interpretedParameters.length + 1];
+                    System.arraycopy(interpretedParameters, 0, interpretedParametersNew, 0, interpretedParameters.length);
+
+                    interpretedParametersNew[i] = parameters[i].getValue();
+                }
+            }
+
+            interpretedParameters = interpretedParametersNew;
         }
 
         return interpretedParameters;
@@ -122,16 +144,16 @@ public class InterpreterForParameter {
         return required_parameter;
     }
 
-    private static boolean checkIfInfinityParameter(Parameter[] parameters) {
-        boolean infinity_param = false;
+    private static boolean anyParameterIsInfinity(Parameter[] parameters) {
+        boolean infinity = false;
 
         for (Parameter parameter : parameters) {
             if (parameter.isInifinity()) {
-                infinity_param = true;
+                infinity = true;
                 break;
             }
         }
 
-        return infinity_param;
+        return infinity;
     }
 }

@@ -11,15 +11,13 @@ import rip.shuka.core.logic.datatypes.types.String;
 public class Sayonara extends Function {
     public Sayonara() {
         super("sayonara",new Parameter[] {
-                new Parameter("", new Datatype[] { new String() }, "Optional: Message after Exit"),
+                new Parameter(new DatatypeObject(new String(), ""), new Datatype[] { new String() }, "Optional: Message after Exit"),
         });
     }
 
     @Override
     public DatatypeObject execute(DatatypeObject[] args) {
-        if (args.length > 0) {
-            System.out.println(StringCorrectorUtil.correctForConsole(args[0].value()));
-        }
+        System.out.println(StringCorrectorUtil.correctForConsole(args[0].value()));
         System.exit(0);
         return new DatatypeObject(new Null(), null);
     }
