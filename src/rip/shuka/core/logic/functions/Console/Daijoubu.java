@@ -14,11 +14,16 @@ public class Daijoubu extends Function {
         super("daijoubu", new Parameter[] {
                 new Parameter(null, new Datatype[] { new Any()}, "The text to moan but it's green")
         });
+
+        this.getParameters()[0].beInfinityParam();
     }
 
     @Override
     public DatatypeObject execute(DatatypeObject[] args) {
-        System.out.println(ColorUtil.GREEN + StringCorrectorUtil.correctForConsole(args[0].value()) + ColorUtil.RESET);
+        for (DatatypeObject arg : args) {
+            System.out.println(ColorUtil.GREEN + StringCorrectorUtil.correctForConsole(arg.value()) + ColorUtil.RESET);
+        }
+
         return new DatatypeObject(new Null(), null);
     }
 }

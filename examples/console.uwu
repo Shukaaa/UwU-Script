@@ -6,5 +6,8 @@
 console.daijoubu(str<Daijoubu\sOutput>)
 console.error(str<Red\sOutput>)
 console.moan(str<Normal\sOutput>)
-console.cherry_blossom(str<Cherry\sBlossom\sOutput>)
+console.sakura(str<Sakura\sOutput>)
 console.zenitsu(str<Zenitsu\sOutput>)
+
+// Infinity Params
+console.daijoubu(str<Daijoubu\sOutput>, str<with>, str<multiple>, str<params>)

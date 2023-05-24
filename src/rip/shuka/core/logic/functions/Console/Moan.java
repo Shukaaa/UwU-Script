@@ -13,11 +13,16 @@ public class Moan extends Function {
         super("moan", new Parameter[] {
                 new Parameter(null, new Datatype[] { new Any()}, "The text to moan")
         });
+
+        this.getParameters()[0].beInfinityParam();
     }
 
     @Override
     public DatatypeObject execute(DatatypeObject[] args) {
-        System.out.println(StringCorrectorUtil.correctForConsole(args[0].value()));
+        for (DatatypeObject arg : args) {
+            System.out.println(StringCorrectorUtil.correctForConsole(arg.value()));
+        }
+
         return new DatatypeObject(new Null(), null);
     }
 }
