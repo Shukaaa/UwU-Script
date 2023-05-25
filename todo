@@ -1,6 +1,3 @@
-Bugs:
-- Optional Parameters in Functions are not working :/
-
 # Mathematische Funktionen
 - Round to the nearest integer (round)
 - Round up (ceil)

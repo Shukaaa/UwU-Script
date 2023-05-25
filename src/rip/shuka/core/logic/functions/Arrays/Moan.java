@@ -21,8 +21,10 @@ public class Moan extends Function {
         public DatatypeObject execute(DatatypeObject[] args) {
             Array array = ArrayStore.getInstance().getArray(args[0].value());
 
+            int i = 0;
             for (DatatypeObject datatypeObject : array.datatypeObjects()) {
-                System.out.println(StringCorrectorUtil.correctForConsole(datatypeObject.value()));
+                System.out.println(i + ": " + StringCorrectorUtil.correctForConsole(datatypeObject.value()));
+                i++;
             }
 
             return new DatatypeObject(new Null(), null);

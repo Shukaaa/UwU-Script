@@ -15,11 +15,12 @@ import static rip.shuka.core.interpreter.Interpreter.interpretLine;
 public class InterpreterForParameter {
     public static DatatypeObject[] interpretParameter(String given_parameter, Parameter[] parameters, int lineNumber, int position, String func) {
         String[] given_parameters = splitGivenParameter(given_parameter);
-        int required_parameter = getRequiredParameters(parameters);
+        ArrayList<DatatypeObject> interpretedParametersList = new ArrayList<>();
+        int required_parameter = getRequiredParameters(parameters, interpretedParametersList);
 
         for (String parameter : given_parameters) {
             if (Objects.equals(parameter, "")) {
-                if (required_parameter == 0) {
+                if (required_parameter == 0 && interpretedParametersList.size() == 0) {
                     return new DatatypeObject[0];
                 } else {
                     given_parameters = new String[0];
@@ -35,7 +36,7 @@ public class InterpreterForParameter {
             ErrorUtil.callError("The function <" + func + "> has " + required_parameter + " parameters but " + given_parameters.length + " were given.");
         }
 
-        DatatypeObject[] interpretedParameters = new DatatypeObject[given_parameters.length];
+        DatatypeObject[] interpretedParameters = interpretedParametersList.toArray(new DatatypeObject[interpretedParametersList.size()]);
 
         int infinity_pos = -1;
         for (int i = 0; i < given_parameters.length; i++) {
@@ -79,25 +80,6 @@ public class InterpreterForParameter {
             interpretedParameters[i] = interpretedParameter;
         }
 
-        // check for optional parameter
-        if (interpretedParameters.length < parameters.length) {
-            DatatypeObject[] interpretedParametersNew = new DatatypeObject[0];
-            for (int i = 0; i < parameters.length; i++) {
-                try {
-                    interpretedParameters[i] = interpretedParameters[i];
-                    interpretedParametersNew = interpretedParameters;
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    // add array length +1
-                    interpretedParametersNew = new DatatypeObject[interpretedParameters.length + 1];
-                    System.arraycopy(interpretedParameters, 0, interpretedParametersNew, 0, interpretedParameters.length);
-
-                    interpretedParametersNew[i] = parameters[i].getValue();
-                }
-            }
-
-            interpretedParameters = interpretedParametersNew;
-        }
-
         return interpretedParameters;
     }
 
@@ -132,12 +114,15 @@ public class InterpreterForParameter {
         return given_parameters;
     }
 
-    private static int getRequiredParameters(Parameter[] parameters) {
+    private static int getRequiredParameters(Parameter[] parameters, ArrayList<DatatypeObject> interpretedParameters) {
         int required_parameter = 0;
 
         for (Parameter parameter : parameters) {
             if (parameter.isRequired()) {
+                interpretedParameters.add(null);
                 required_parameter++;
+            } else {
+                interpretedParameters.add(parameter.getValue());
             }
         }
 
