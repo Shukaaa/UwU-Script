@@ -1,3 +1,6 @@
+? Testing:
+- Casting Any type to other types?
+
 # Mathematische Funktionen
 - Round to the nearest integer (round)
 - Round up (ceil)
@@ -20,15 +23,14 @@ array.sort(name, sort_type, sort_order)
 # If Else
 cs.elseif(statement)
 
+# Functions
+func.param(int<param_pos>)
+
 # Loops
 cs.while()
 cs.for()
 cs.for_each()
 cs.end()
-
-# Function
-func.define(name, func.param(type, optional_default_value))
-func.end()
 
 # Checkpoints are used to switch to a new part of the code
 checkpoint.set(name)
