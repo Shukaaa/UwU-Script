@@ -22,8 +22,8 @@ public class Ask extends Function {
         Scanner scanner = new Scanner(System.in);
         DatatypeObject result = null;
 
+        System.out.println(StringCorrectorUtil.correctForConsole(args[0].value()));
         if (scanner.hasNextLine()) {
-            System.out.println(StringCorrectorUtil.correctForConsole(args[0].value()));
             result = new DatatypeObject(new String(), scanner.nextLine());
         } else {
             ErrorUtil.callError("No line found.");

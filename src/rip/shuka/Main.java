@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        FileReaderUtil fileReader = new FileReaderUtil();
+
 
         if (args.length >= 1) {
             String file = null;
@@ -40,7 +40,7 @@ public class Main {
             if (speed_test) {
                 long startTime = System.nanoTime();
 
-                fileReader.read(file);
+                read(file);
 
                 long endTime = System.nanoTime();
 
@@ -51,9 +51,15 @@ public class Main {
                 return;
             }
 
-            fileReader.read(file);
+            read(file);
         } else {
             ErrorUtil.callError("Kein Pfad wurde ausgewählt");
         }
+    }
+
+    private static void read(String file) throws IOException {
+        FileReaderUtil fileReader = new FileReaderUtil();
+
+        fileReader.read(file);
     }
 }

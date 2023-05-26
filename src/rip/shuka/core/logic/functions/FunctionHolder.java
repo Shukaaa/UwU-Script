@@ -16,4 +16,13 @@ public class FunctionHolder {
     public Function[] getFunctions() {
         return functions;
     }
+
+    public Function getFunction(String name) {
+        for (Function function : functions) {
+            if (function.getName().equalsIgnoreCase(name)) {
+                return function;
+            }
+        }
+        return null;
+    }
 }

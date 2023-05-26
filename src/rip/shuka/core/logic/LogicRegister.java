@@ -5,8 +5,13 @@ import rip.shuka.core.logic.base.elements.Comments;
 import rip.shuka.core.logic.functions.Arrays.FH.ArrayFH;
 import rip.shuka.core.logic.functions.Cast.FH.CastFH;
 import rip.shuka.core.logic.functions.Console.FH.ConsoleFH;
+import rip.shuka.core.logic.functions.ControlStructures.FH.ControlStructuresFH;
+import rip.shuka.core.logic.functions.Func.FH.FuncFH;
+import rip.shuka.core.logic.functions.Function;
 import rip.shuka.core.logic.functions.FunctionHolder;
 import rip.shuka.core.logic.functions.Logic.FH.LogicFH;
+import rip.shuka.core.logic.functions.ControlStructures.If;
+import rip.shuka.core.logic.functions.ControlStructures.IfEnds;
 import rip.shuka.core.logic.functions.Math.FH.MathFH;
 import rip.shuka.core.logic.functions.System.FH.SystemFH;
 import rip.shuka.core.logic.functions.Variables.FH.VariablesFH;
@@ -23,4 +28,8 @@ public class LogicRegister {
             new CastFH(),
             new ArrayFH()
     };
+
+    public static final FunctionHolder csFH = new ControlStructuresFH();
+
+    public static final FunctionHolder funcFH = new FuncFH();
 }

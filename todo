@@ -17,27 +17,14 @@ str.endsWith()
 array.sort(name, sort_type)
 array.sort(name, sort_type, sort_order)
 
-
 # If Else
-
-logic.if(statement)
-...
-logic.if_ends()
-
-
-logic.if_else(statement)
-...
-logic.elseif(statement)
-...
-logic.else()
-...
-logic.if_else_ends()
+cs.elseif(statement)
 
 # Loops
-loop.while()
-loop.for()
-loop.for_each()
-loop.end()
+cs.while()
+cs.for()
+cs.for_each()
+cs.end()
 
 # Function
 func.define(name, func.param(type, optional_default_value))

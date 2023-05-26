@@ -1,0 +1,5 @@
+func.new(str<moany>, int<0>)
+    console.moan(str<moan>)
+func.end()
+
+func.moany()

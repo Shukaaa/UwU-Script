@@ -1,0 +1,7 @@
+vars.uwu(str<pw>, console.ask(str<password:>))
+
+cs.if(logic.is(vars.owo(str<pw>), str<test>))
+    console.moan(str<allowed>)
+cs.else()
+    console.moan(str<rejected>)
+cs.if_ends() // when the if statement is the last statement of the code you don't need to end it
