@@ -10,6 +10,7 @@ import rip.shuka.core.logic.functions.Func.FH.FuncFH;
 import rip.shuka.core.logic.functions.FunctionHolder;
 import rip.shuka.core.logic.functions.Incrementer.FH.IncrementerFH;
 import rip.shuka.core.logic.functions.Logic.FH.LogicFH;
+import rip.shuka.core.logic.functions.Loop.FH.LoopFH;
 import rip.shuka.core.logic.functions.Math.FH.MathFH;
 import rip.shuka.core.logic.functions.System.FH.SystemFH;
 import rip.shuka.core.logic.functions.Variables.FH.VariablesFH;
@@ -29,6 +30,6 @@ public class LogicRegister {
     };
 
     public static final FunctionHolder csFH = new ControlStructuresFH();
-
     public static final FunctionHolder funcFH = new FuncFH();
+    public static final FunctionHolder loopFH = new LoopFH();
 }

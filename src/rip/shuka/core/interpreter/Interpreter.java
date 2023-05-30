@@ -28,6 +28,45 @@ public class Interpreter {
                 continue;
             }
 
+            // Build Loop Content
+            if (InterpreterStateStore.loop_information.size() != 0) {
+                LoopInformation loopInformation = InterpreterStateStore.loop_information.get(InterpreterStateStore.loop_information.size() - 1);
+
+                if (!loopInformation.isLooping) {
+                    if (argument.startsWith(LogicRegister.loopFH.getName() + ".end()")) {
+                        loopInformation.isLooping = true;
+
+                        for (int j = 0; j < loopInformation.times; j++) {
+                            for (int k = 0; k < loopInformation.getLines().length && !InterpreterStateStore.loopBreaked; k++) {
+                                if (InterpreterStateStore.loopBreaked) {
+                                    InterpreterStateStore.loopBreaked = false;
+                                    break;
+                                } else {
+                                    interpretLine(loopInformation.getLines()[k], lineNumber);
+                                }
+                            }
+                        }
+
+                        continue;
+                    }
+
+                    String[] lines = loopInformation.getLines();
+                    String[] newLines = new String[lines.length + 1];
+                    System.arraycopy(lines, 0, newLines, 0, lines.length);
+                    newLines[newLines.length - 1] = line;
+                    loopInformation.setLines(newLines);
+
+                    continue;
+                }
+            }
+
+            // Check for Break
+            if (argument.startsWith(LogicRegister.loopFH.getName() + ".break()") && InterpreterStateStore.if_result) {
+                InterpreterStateStore.loop_information.remove(InterpreterStateStore.loop_information.size() - 1);
+                InterpreterStateStore.loopBreaked = true;
+                break;
+            }
+
             // Check for interpreter changeable functions
             if (argument.startsWith(LogicRegister.funcFH.getName() + ".end()")) {
                 InterpreterStateStore.function_flag = false;
@@ -79,6 +118,20 @@ public class Interpreter {
                     String parameter = argument.substring(logicElement.getName().length() + LogicRegister.csFH.getName().length() + 2, argument.length() - 1);
                     DatatypeObject[] interpreted_parameters = interpretParameter(parameter, logicElement.getParameters(), lineNumber, i + 1, func);
                     InterpreterStateStore.if_result = Boolean.parseBoolean(interpreted_parameters[0].value());
+                    continue;
+                }
+            }
+
+            // Check for loop function
+            if (argument.startsWith(LogicRegister.loopFH.getName() + ".")) {
+                String func = argument.replace(LogicRegister.loopFH.getName() + ".", "");
+
+                // REPEAT FUNCTION
+                if (func.startsWith("repeat" + "(") && argument.endsWith(")")) {
+                    Function logicElement = LogicRegister.loopFH.getFunction("repeat");
+                    String parameter = argument.substring(logicElement.getName().length() + LogicRegister.loopFH.getName().length() + 2, argument.length() - 1);
+                    DatatypeObject[] interpreted_parameters = interpretParameter(parameter, logicElement.getParameters(), lineNumber, i + 1, func);
+                    InterpreterStateStore.loop_information.add(new LoopInformation(Integer.parseInt(interpreted_parameters[0].value()), new String[]{}));
                     continue;
                 }
             }

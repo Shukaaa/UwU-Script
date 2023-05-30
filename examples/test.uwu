@@ -1,8 +1,9 @@
-// 2 with i funcs
-i.init(str<i>, int<10>)
-i.inc(str<i>)
-i.inc(str<i>, int<2>)
-i.dec(str<i>)
-i.dec(str<i>, int<2>)
+i.init(str<i>)
+loop.repeat(int<4>)
+    cs.if(logic.is_same(i.get(str<i>), int<2>))
+        loop.break()
+    cs.if_ends()
 
-console.moan(i.get(str<i>))
+    console.moan(i.get(str<i>))
+    i.inc(str<i>)
+loop.end()

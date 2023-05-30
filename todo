@@ -34,10 +34,9 @@ loop.repeat(arr.length(str<arr>))
     i.inc(str<i>)
 loop.end()
 
-# Increment
-increment custom amount
-i.inc(str<i>, int<5>)
-i.dec(str<i>, int<5>)
+loop.continue()
+loop.break()
+
 
 # Checkpoints are used to switch to a new part of the code
 checkpoint.set(name)
