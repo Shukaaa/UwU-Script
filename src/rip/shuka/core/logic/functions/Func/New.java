@@ -11,7 +11,7 @@ public class New extends Function {
     public New() {
         super("new", new Parameter[]{
                 new Parameter(null, new Datatype[]{ new String() }, "name of the function"),
-                new Parameter(null, new Datatype[]{ new Any() }, "parameters of the function"),
+                new Parameter(new DatatypeObject(new String(), ""), new Datatype[]{ new Any() }, "parameters of the function"),
         });
 
         getParameters()[1].beInfinityParam();

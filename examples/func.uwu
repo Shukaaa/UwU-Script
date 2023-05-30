@@ -3,4 +3,4 @@ func.new(str<mn>, str<moan>, int<1>)
     console.moan(func.param(int<2>))
 func.end()
 
-func.mn(str<moany>, int<69>)
+func.mn(str<moany>, str<moan>, int<69>)

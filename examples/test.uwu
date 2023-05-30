@@ -1,1 +1,5 @@
-console.ask(str<test>)
+// 2 with i funcs
+i.init(str<i>, int<10>)
+i.inc(str<i>)
+
+console.moan(i.get(str<i>))

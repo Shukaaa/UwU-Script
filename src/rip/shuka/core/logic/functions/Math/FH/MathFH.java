@@ -13,8 +13,6 @@ public class MathFH extends FunctionHolder {
                 new Multi(),
                 new Div(),
                 new Mod(),
-                new Even(),
-                new Odd(),
 
                 // Advanced Math
                 new Pow(),
@@ -30,7 +28,13 @@ public class MathFH extends FunctionHolder {
                 new GreaterIs(),
                 new Less(),
                 new LessIs(),
-                new Is()
+                new Is(),
+
+                // Math Helper
+                new Even(),
+                new Odd(),
+                new Inc(),
+                new Dec(),
         });
     }
 }

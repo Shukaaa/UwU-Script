@@ -23,14 +23,20 @@ array.sort(name, sort_type, sort_order)
 # If Else
 cs.elseif(statement)
 
-# Functions
-func.param(int<param_pos>)
-
 # Loops
-cs.while()
-cs.for()
-cs.for_each()
-cs.end()
+
+i.init(str<i>)
+loop.while(math.less(i.get(str<i>), int<10>))
+    ...
+    i.inc(str<i>)
+loop.end()
+
+i.init(str<i>)
+loop.repeat(arr.length(str<arr>))
+    ...
+    i.inc(str<i>)
+loop.end()
+
 
 # Checkpoints are used to switch to a new part of the code
 checkpoint.set(name)
