@@ -17,11 +17,11 @@ public class Incrementer {
         return value;
     }
 
-    public void increment() {
-        value++;
+    public void increment(int amount) {
+        value += amount;
     }
 
-    public void decrement() {
-        value--;
+    public void decrement(int amount) {
+        value -= amount;
     }
 }

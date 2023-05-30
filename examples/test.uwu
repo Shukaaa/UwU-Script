@@ -1,5 +1,8 @@
 // 2 with i funcs
 i.init(str<i>, int<10>)
 i.inc(str<i>)
+i.inc(str<i>, int<2>)
+i.dec(str<i>)
+i.dec(str<i>, int<2>)
 
 console.moan(i.get(str<i>))
