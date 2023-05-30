@@ -36,8 +36,6 @@ public class InterpreterForParameter {
             ErrorUtil.callError("The function <" + func + "> has " + required_parameter + " parameters but " + given_parameters.length + " were given.");
         }
 
-        DatatypeObject[] interpretedParameters = interpretedParametersList.toArray(new DatatypeObject[interpretedParametersList.size()]);
-
         int infinity_pos = -1;
         for (int i = 0; i < given_parameters.length; i++) {
             if (infinity_pos == -1) {
@@ -77,10 +75,14 @@ public class InterpreterForParameter {
                                 "Valid datatypes are: '" + allowedDatatypes + "' but you tried to use " + interpretedParameter.datatype().getName() + ".");
             }
 
-            interpretedParameters[i] = interpretedParameter;
+            if (infinity_pos == -1) {
+                interpretedParametersList.add(i, interpretedParameter);
+            } else {
+                interpretedParametersList.add(interpretedParameter);
+            }
         }
 
-        return interpretedParameters;
+        return interpretedParametersList.toArray(new DatatypeObject[0]);
     }
 
     private static String[] splitGivenParameter(String given_parameter) {
@@ -104,10 +106,10 @@ public class InterpreterForParameter {
                     continue;
                 }
 
-                given_parameters_arr.add(given_parameter.substring(position_arr.get(index-1)+1, position_arr.get(index)));
+                given_parameters_arr.add(given_parameter.substring(position_arr.get(index - 1) + 1, position_arr.get(index)));
             }
 
-            given_parameters_arr.add(given_parameter.substring(position_arr.get(position_arr.size()-1)+1));
+            given_parameters_arr.add(given_parameter.substring(position_arr.get(position_arr.size() - 1) + 1));
             given_parameters = given_parameters_arr.toArray(new String[0]);
         }
 
@@ -119,7 +121,6 @@ public class InterpreterForParameter {
 
         for (Parameter parameter : parameters) {
             if (parameter.isRequired()) {
-                interpretedParameters.add(null);
                 required_parameter++;
             } else {
                 interpretedParameters.add(parameter.getValue());

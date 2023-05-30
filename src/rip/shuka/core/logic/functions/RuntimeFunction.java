@@ -15,6 +15,10 @@ public class RuntimeFunction extends Function {
         return lines;
     }
 
+    public void setLines(String[] lines) {
+        this.lines = lines;
+    }
+
     public void addLine(String line) {
         String[] newLines = new String[lines.length + 1];
         for (int i = 0; i < lines.length; i++) {

@@ -1,5 +1,6 @@
-func.new(str<moany>, int<0>)
-    console.moan(str<moan>)
+func.new(str<mn>, str<moan>, int<1>)
+    console.moan(func.param(int<1>))
+    console.moan(func.param(int<2>))
 func.end()
 
-func.moany()
+func.mn(str<moany>, int<69>)

@@ -112,8 +112,62 @@ public class Interpreter {
 
             // Check for runtime functions
             if (argument.startsWith(LogicRegister.funcFH.getName() + ".")) {
-                String funcName = argument.replace(LogicRegister.funcFH.getName() + ".", "").split("\\(")[0];
+                String func = argument.replace(LogicRegister.funcFH.getName() + ".", "");
+                String funcName = func.split("\\(")[0];
+
                 RuntimeFunction runtimeFunction = RuntimeFunctionStore.getFunction(funcName);
+
+                if (runtimeFunction == null) {
+                    runtimeFunction = RuntimeFunctionStore.getFunction(InterpreterStateStore.latest_runtime_function_name);
+                } else {
+                    InterpreterStateStore.latest_runtime_function_name = funcName;
+                }
+
+                // Parameter checks
+                String parameter = argument.substring(funcName.length() + LogicRegister.funcFH.getName().length() + 2, argument.length() - 1);
+                assert runtimeFunction != null;
+                DatatypeObject[] interpreted_parameters = interpretParameter(parameter, runtimeFunction.getParameters(), lineNumber, i + 1, func);
+
+                // Replace Parameter keywords in lines with values
+                for (int j = 0; j < runtimeFunction.getLines().length; j++) {
+                    String line1 = runtimeFunction.getLines()[j];
+
+                    for (int k = 0; k < interpreted_parameters.length; k++) {
+                        String searchFor = LogicRegister.funcFH.getName() + ".param(int<" + (k + 1) + ">)";
+
+                        String replaceWith = interpreted_parameters[k].value();
+                        switch (interpreted_parameters[k].datatype().getName()) {
+                            case "str":
+                                replaceWith = "str<" + replaceWith + ">";
+                                break;
+                            case "int":
+                                replaceWith = "int<" + replaceWith + ">";
+                                break;
+                            case "bool":
+                                replaceWith = "bool<" + replaceWith + ">";
+                                break;
+                            case "float":
+                                replaceWith = "float<" + replaceWith + ">";
+                                break;
+                            case "any":
+                                replaceWith = "any<" + replaceWith + ">";
+                                break;
+                            case "null":
+                                replaceWith = "null<" + replaceWith + ">";
+                        }
+
+                        line1 = line1.replace(searchFor, replaceWith);
+
+                        String[] newLines = runtimeFunction.getLines();
+                        newLines[j] = line1;
+                        runtimeFunction.setLines(newLines);
+                    }
+
+                    // check if there is any called parameter left
+                    if (line1.contains(LogicRegister.funcFH.getName() + ".param")) {
+                        ErrorUtil.callError("Parameter not found at line " + lineNumber);
+                    }
+                }
 
                 if (runtimeFunction != null) {
                     for (String eachLine : runtimeFunction.getLines()) {
@@ -138,6 +192,7 @@ public class Interpreter {
                         ErrorUtil.callError("Function " + funcName + " not found at line " + lineNumber);
                     }
 
+                    assert logicElement != null;
                     if (func.startsWith(logicElement.getName() + "(") && argument.endsWith(")")) {
                         String parameter = argument.substring(logicElement.getName().length() + functionHolder.getName().length() + 2, argument.length() - 1);
                         DatatypeObject[] interpreted_parameters = interpretParameter(parameter, logicElement.getParameters(), lineNumber, i + 1, func);
